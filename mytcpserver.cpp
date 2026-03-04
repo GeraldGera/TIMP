@@ -1,4 +1,6 @@
 #include "mytcpserver.h"
+#include "functionstoserver.h"
+#include <QString>
 
 MyTcpServer::MyTcpServer(QObject *parent) : QObject(parent)
 {
@@ -41,8 +43,10 @@ void MyTcpServer::slotServerRead()
     while(clientSocket->bytesAvailable() > 0)
     {
         QByteArray array = clientSocket->readAll();
-        qDebug() << array;
-        clientSocket->write(array);
+        QString message = QString::fromUtf8(array).trimmed();
+        qDebug() << "Received from client:" << message;
+        QString response = parsing(message);
+        clientSocket->write((response + "\r\n").toUtf8());
     }
 }
 
@@ -54,4 +58,5 @@ void MyTcpServer::slotClientDisconnected()
         mTcpSockets.remove(desc);
         clientSocket->deleteLater();
     }
+
 }
