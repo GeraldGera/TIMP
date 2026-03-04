@@ -9,10 +9,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     main.cpp \
-    mytcpserver.cpp
+    mytcpserver.cpp \
+    functionstoserver.cpp
 
 HEADERS += \
-    mytcpserver.h
+    mytcpserver.h \
+    functionstoserver.h
 
 unix:!android: target.path = /opt/$${TARGET}/bin
+
 !isEmpty(target.path): INSTALLS += target
