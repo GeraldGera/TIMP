@@ -44,7 +44,8 @@ void MyTcpServer::slotServerRead()
     {
         QByteArray array = clientSocket->readAll();
         QString message = QString::fromUtf8(array).trimmed();
-        qDebug() << "Received from client:" << message;
+        int desc = clientSocket->socketDescriptor();
+        qDebug() << "Received from client" << desc << ":" << message;
         QString response = parsing(message);
         clientSocket->write((response + "\r\n").toUtf8());
     }
@@ -60,3 +61,4 @@ void MyTcpServer::slotClientDisconnected()
     }
 
 }
+
