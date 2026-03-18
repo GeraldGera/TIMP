@@ -1,35 +1,50 @@
 #include "functionstoserver.h"
+#include "Singleton.h"
 #include <QMap>
 #include <QList>
 #include <QRandomGenerator>
 #include <QDebug>
 
 
-QString reg(const QString &login, const QString &pass)
-{
-    //Реализация регистрации
-    return "Successful registration. Your userID: " + login;
+QString reg(const QString &login, const QString &pass, const QString &email, long socketDesc){
+    if (Singleton::getInstance()->is_reg_ok(login, pass, email, socketDesc))
+        return "Registration successful";
+    else
+        return "Registration failed";
 }
 
-QString auth(const QString &login, const QString &pass)
-{
-    //Реализация авторизации
-    return "Successful authentication. Your userID: " + login;
+QString auth(const QString &login, const QString &pass, long socketDesc){
+    if (Singleton::getInstance()->is_auth_ok(login, pass, socketDesc))
+        return "Authentication successful";
+    else
+        return "Authentication failed";
 }
 
-QString getTask(const QString &userId, const int type_num)
-{
-    //Код по предоставлению задания для пользователя
-    return QString("Here are 2 suggested tasks:\n");
+QString getTask(long socketDesc, int type_num){
+    QString task = Singleton::getInstance()->get_task_for_user(socketDesc, type_num);
+    if (task.startsWith("ERROR"))
+        return task;
+    return "Task: " + task;
 }
 
-
-QString getStat(const QString &userId)
-{
-    return QString("Here's a statistic of your past activity:\n");
+QString submitAnswer(long socketDesc, int taskId, const QString &answer){
+    bool correct = Singleton::getInstance()->submit_answer(socketDesc, taskId, answer);
+    if (correct)
+        return "Correct. You're breathtaking!";
+    else
+        return "Incorrect. Try again.";
 }
 
-QString parsing(const QString &message)
+QString getStat(long socketDesc){
+    return Singleton::getInstance()->get_curr_user_stat(socketDesc);
+}
+
+QString getAllStat(long socketDesc)
+{
+    return Singleton::getInstance()->get_all_stat(socketDesc);
+}
+
+QString parsing(const QString &message, long socketDesc)
 {
     if (message.isEmpty())
         return "ERROR: пустое сообщение";
@@ -40,31 +55,44 @@ QString parsing(const QString &message)
 
     QString cmd = parts[0].toUpper();
 
-    if (cmd == "REG" && parts.size() >= 3)
-        return reg(parts[1], parts[2]);
+    if (cmd == "REG" && parts.size() >= 4)
+        return reg(parts[1], parts[2], parts[3], socketDesc);
 
     if (cmd == "AUTH" && parts.size() >= 3)
-        return auth(parts[1], parts[2]);
+        return auth(parts[1], parts[2], socketDesc);
 
-    if (cmd == "GET_TASK" && parts.size() >= 3) {
-        bool ok = false;
-        int type_num = parts[2].toInt(&ok);
+    if (cmd == "GET_TASK" && parts.size() >= 2) {
+        bool ok;
+        int type_num = parts[1].toInt(&ok);
         if (!ok)
             return "ERROR: номер задания должен быть числом";
-        return getTask(parts[1], type_num);
+        return getTask(socketDesc, type_num);
     }
 
-    if (cmd == "STAT" && parts.size() >= 2)
-        return getStat(parts[1]);
+    if (cmd == "SUBMIT" && parts.size() >= 3) {
+        bool ok;
+        int taskId = parts[1].toInt(&ok);
+        if (!ok)
+            return "ERROR: task ID must be a number";
+        return submitAnswer(socketDesc, taskId, parts[2]);
+    }
+
+    if (cmd == "STAT")
+        return getStat(socketDesc);
+
+    if (cmd == "ALLSTAT")
+        return getAllStat(socketDesc);
 
     if (cmd == "HELP")
         return "OK: Доступные команды (разделитель &):\n"
-               "REG&логин&пароль\n"
+               "REG&логин&пароль&email\n"
                "AUTH&логин&пароль\n"
-               "GET_TASK&логин&номер_задания\n"
-               "STAT&логин\n"
+               "GET_TASK&номер_задания\n"
+               "SUBMT&номер_задания&ответ\n"
+               "STAT\n"
+               "ALLSTAT (admin only)\n"
                "HELP\n\n"
-               "Пример: GET_TASK&MyLogin&12";
+               "Пример: GET_TASK&12";
 
     return "ERROR: неизвестная команда. Напиши HELP";
 }
