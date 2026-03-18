@@ -1,5 +1,6 @@
 #include "mytcpserver.h"
 #include "functionstoserver.h"
+#include "Singleton.h"
 #include <QString>
 
 MyTcpServer::MyTcpServer(QObject *parent) : QObject(parent)
@@ -26,7 +27,7 @@ void MyTcpServer::slotNewConnection()
 {
     QTcpSocket* clientSocket = mTcpServer->nextPendingConnection();
     int desc = clientSocket->socketDescriptor();
-    
+    clientSocket->setProperty("descriptor", desc);
     mTcpSockets.insert(desc, clientSocket);
 
     clientSocket->write("Hello! Multi-client server is ready!\r\n");
@@ -46,7 +47,7 @@ void MyTcpServer::slotServerRead()
         QString message = QString::fromUtf8(array).trimmed();
         int desc = clientSocket->socketDescriptor();
         qDebug().nospace() << "Received from client " << desc << ": " << message;
-        QString response = parsing(message);
+        QString response = parsing(message, desc);
         clientSocket->write((response + "\r\n").toUtf8());
     }
 }
@@ -55,11 +56,10 @@ void MyTcpServer::slotClientDisconnected()
 {
     QTcpSocket* clientSocket = qobject_cast<QTcpSocket*>(sender());
     if (clientSocket) {
-        int desc = clientSocket->socketDescriptor();
+        int desc = clientSocket->property("descriptor").toInt();
+        qDebug() << "Client disconnected, descriptor:" << desc;
+        Singleton::getInstance()->clear_socket_id(desc);            //Очистка socket_id в БД
         mTcpSockets.remove(desc);
         clientSocket->deleteLater();
     }
-
 }
-
-
