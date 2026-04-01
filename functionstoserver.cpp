@@ -15,7 +15,7 @@ QString reg(const QString &login, const QString &pass, const QString &email, lon
 
 QString auth(const QString &login, const QString &pass, long socketDesc){
     if (Singleton::getInstance()->is_auth_ok(login, pass, socketDesc))
-        return "Authentication successful";
+        return "Successful authentication ";
     else
         return "Authentication failed";
 }
@@ -24,7 +24,7 @@ QString getTask(long socketDesc, int type_num){
     QString task = Singleton::getInstance()->get_task_for_user(socketDesc, type_num);
     if (task.startsWith("ERROR"))
         return task;
-    return "Task: " + task;
+    return task;
 }
 
 QString submitAnswer(long socketDesc, int taskId, const QString &answer){
@@ -61,11 +61,13 @@ QString parsing(const QString &message, long socketDesc)
     if (cmd == "AUTH" && parts.size() >= 3)
         return auth(parts[1], parts[2], socketDesc);
 
-    if (cmd == "GET_TASK" && parts.size() >= 2) {
-        bool ok;
-        int type_num = parts[1].toInt(&ok);
-        if (!ok)
-            return "ERROR: номер задания должен быть числом";
+    if (cmd == "GET_TASK") {
+        int type_num = -1;              // по умолчанию - любой тип
+        if (parts.size() >= 2) {
+            bool ok;
+            type_num = parts[1].toInt(&ok);
+            if (!ok) type_num = -1;
+        }
         return getTask(socketDesc, type_num);
     }
 
@@ -87,8 +89,9 @@ QString parsing(const QString &message, long socketDesc)
         return "OK: Доступные команды (разделитель &):\n"
                "REG&логин&пароль&email\n"
                "AUTH&логин&пароль\n"
+               "GET_TASK\n"
                "GET_TASK&номер_задания\n"
-               "SUBMT&номер_задания&ответ\n"
+               "SUBMIT&номер_задания&ответ\n"
                "STAT\n"
                "ALLSTAT (admin only)\n"
                "HELP\n\n"
