@@ -1,3 +1,4 @@
+#include <QCryptographicHash>
 #include "Singleton.h"
 
 Singleton * Singleton::p_instance = nullptr;
@@ -33,11 +34,10 @@ query.exec("CREATE TABLE IF NOT EXISTS users ("
 
 // Таблица tasks
 query.exec("CREATE TABLE IF NOT EXISTS tasks ("
-           "id INTEGER PRIMARY KEY AUTOINCREMENT, "
-           "task_text TEXT NOT NULL, "
-           "correct_answer VARCHAR(255) NOT NULL, "
-           "task_num VARCHAR(50), "
-           "difficulty INTEGER)");
+           "id INTEGER PRIMARY KEY AUTOINCREMENT,"
+           "task_text TEXT NOT NULL,"
+           "correct_answer VARCHAR(255) NOT NULL,"
+           "task_num INTEGER CHECK (task_num BETWEEN 1 and 12))");
 
 // Таблица user_results
 query.exec("CREATE TABLE IF NOT EXISTS user_results ("
@@ -63,12 +63,17 @@ Singleton* Singleton::getInstance(){
     return p_instance;
  }
 
- //Здесь под каждую из функций пишем запросы
+static QString hashPassword(const QString &password) {
+    QByteArray hash = QCryptographicHash::hash(password.toUtf8(), QCryptographicHash::Sha256);
+    return QString::fromLatin1(hash.toHex());
+}
+
 bool Singleton::is_auth_ok(QString login, QString pass, long socketDesc){
     QSqlQuery query(db);
     query.prepare("SELECT id FROM users WHERE login = :login AND password = :pass");
     query.bindValue(":login", login);
-    query.bindValue(":pass", pass);
+    //query.bindValue(":pass", pass);
+    query.bindValue(":pass", hashPassword(pass));
     if (query.exec() && query.next()) {
         // Обновляем socket_id
         QSqlQuery update(db);
@@ -80,6 +85,7 @@ bool Singleton::is_auth_ok(QString login, QString pass, long socketDesc){
     }
     return false;
  }
+
 bool Singleton::is_reg_ok(QString login, QString pass, QString email, long socketDesc){
     QSqlQuery check(db);
     check.prepare("SELECT id FROM users WHERE login = :login");
@@ -92,7 +98,8 @@ bool Singleton::is_reg_ok(QString login, QString pass, QString email, long socke
     insert.prepare("INSERT INTO users (login, password, email, role, socket_id) "
                    "VALUES (:login, :pass, :email, 'user', :sid)");
     insert.bindValue(":login", login);
-    insert.bindValue(":pass", pass);        //Хэширование?
+    //insert.bindValue(":pass", pass);
+    insert.bindValue(":pass", hashPassword(pass));        //Хэширование
     insert.bindValue(":email", email);
     insert.bindValue(":sid", QString::number(socketDesc));
     return insert.exec();
@@ -108,25 +115,36 @@ QString Singleton::get_task_for_user(long socketDesc, int taskId) {
     }
     int userId = userQuery.value(0).toInt();
 
-    //случайное задание под номером taskId, которое пользователь ещё не решил правильно
+    // Формирование запроса на получение задания
     QSqlQuery taskQuery(db);
-    taskQuery.prepare(
-        "SELECT task_text FROM tasks "
-        "WHERE task_num = :task_num AND id NOT IN ("
-        "SELECT task_id FROM user_results WHERE user_id = :uid AND is_correct = 1"
-        ") "
-        "ORDER BY RANDOM() LIMIT 1"
-        );
-    taskQuery.bindValue(":task_num", taskId);
-    taskQuery.bindValue(":uid", userId);
-
-    if (!taskQuery.exec() || !taskQuery.next()) {
-        return "ERROR: no available tasks of this task_num";
+    if (taskId == -1) {
+        taskQuery.prepare(                              // Любое нерешённое задание
+            "SELECT id, task_text FROM tasks "
+            "WHERE id NOT IN ("
+            "SELECT task_id FROM user_results WHERE user_id = :uid AND is_correct = 1"
+            ") "
+            "ORDER BY RANDOM() LIMIT 1"
+            );
+        taskQuery.bindValue(":uid", userId);
+    }
+    else {
+        taskQuery.prepare(                              // Задание указанного типа (task_num)
+            "SELECT id, task_text FROM tasks "
+            "WHERE task_num = :type AND id NOT IN ("
+            "SELECT task_id FROM user_results WHERE user_id = :uid AND is_correct = 1"
+            ") "
+            "ORDER BY RANDOM() LIMIT 1"
+            );
+        taskQuery.bindValue(":type", taskId);
+        taskQuery.bindValue(":uid", userId);
     }
 
-    QString taskText = taskQuery.value(1).toString();
+    if (!taskQuery.exec() || !taskQuery.next())
+        return "ERROR: no available tasks";
 
-    return QString::number(taskId) + " || " + taskText;
+    int finTaskId = taskQuery.value(0).toInt();
+    QString taskText = taskQuery.value(1).toString();
+    return QString::number(finTaskId) + "||" + taskText;
 }
 
 bool Singleton::submit_answer(long socketDesc, int taskId, QString userAnswer){
@@ -162,12 +180,14 @@ bool Singleton::submit_answer(long socketDesc, int taskId, QString userAnswer){
 
 QString Singleton::get_curr_user_stat(long socketDesc){
     QSqlQuery query(db);
-    query.prepare("SELECT login, "
-                  "SUM(CASE WHEN is_correct = 1 THEN 1 ELSE 0 END) as correct, "
-                  "COUNT(*) as total "
-                  "FROM users LEFT JOIN user_results ON users.id = user_results.user_id "
-                  "WHERE users.socket_id = :sid "
-                  "GROUP BY users.id");
+    query.prepare(
+        "SELECT login, "
+        "SUM(CASE WHEN is_correct = 1 THEN 1 ELSE 0 END) as correct, "
+        "COUNT(user_results.id) as total "
+        "FROM users LEFT JOIN user_results ON users.id = user_results.user_id "
+        "WHERE users.socket_id = :sid "
+        "GROUP BY users.id"
+        );
     query.bindValue(":sid", QString::number(socketDesc));
     if (query.exec() && query.next()) {
         QString login = query.value(0).toString();
@@ -175,8 +195,9 @@ QString Singleton::get_curr_user_stat(long socketDesc){
         int total = query.value(2).toInt();
         return QString("%1||%2||%3").arg(login).arg(correct).arg(total);
     }
-    return "ERROR";
+    return "ERROR: user not found";
 }
+
 QString Singleton::get_all_stat(long socketDesc){
     QSqlQuery check(db);
     check.prepare("SELECT role FROM users WHERE socket_id = :sid");
