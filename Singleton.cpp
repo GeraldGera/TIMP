@@ -163,6 +163,9 @@ bool Singleton::submit_answer(long socketDesc, int taskId, QString userAnswer){
         return false;
     QString correct = taskQuery.value(0).toString();
 
+    userAnswer.replace(',', '.');
+    userAnswer.remove(' ');
+    
     bool isCorrect = (userAnswer == correct);
 
     //запись результата
