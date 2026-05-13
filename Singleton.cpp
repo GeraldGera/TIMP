@@ -8,47 +8,67 @@ SingletonDestroyer::~SingletonDestroyer() { delete p_instance; }
 
 void SingletonDestroyer::initialize(Singleton *p){ p_instance = p; }
 
-Singleton::Singleton(){
-
+Singleton::Singleton() {
     db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("C:/Users/User/Desktop/MPU/TIMP/Actual stuff/SQLite.db");     //Относительный путь БД, когда это отправится в Docker, пока отладка в QT - лучше абсолютный, там что-то про создание нескольких экземпляров при каждой сборке
+
+#ifdef UNIT_TEST_MODE
+    // Для тестов — используем test_db.db в папке с тестами
+    db.setDatabaseName("test_db.db");
+    qDebug() << "[TEST MODE] Using test database: test_db.db";
+#else
+    // Для реального сервера
+    db.setDatabaseName("C:/Users/User/Desktop/MPU/TIMP/Actual stuff/SQLite.db");
+#endif
 
     if(!db.open()){
-        qDebug()<<db.lastError().text();
+        qDebug() << db.lastError().text();
         return;
     }
 
-QSqlQuery pragma(db);
-pragma.exec("PRAGMA foreign_keys = ON;");
+    QSqlQuery pragma(db);
+    pragma.exec("PRAGMA foreign_keys = ON;");
 
-QSqlQuery query(db);
-// Таблица users
-query.exec("CREATE TABLE IF NOT EXISTS users ("
-           "id INTEGER PRIMARY KEY AUTOINCREMENT, "
-           "login VARCHAR(50) UNIQUE NOT NULL, "
-           "password VARCHAR(255) NOT NULL, "
-           "email VARCHAR(100), "
-           "role VARCHAR(20) DEFAULT 'user', "
-           "created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, "
-           "socket_id VARCHAR(20))");
+    QSqlQuery query(db);
 
-// Таблица tasks
-query.exec("CREATE TABLE IF NOT EXISTS tasks ("
-           "id INTEGER PRIMARY KEY AUTOINCREMENT,"
-           "task_text TEXT NOT NULL,"
-           "correct_answer VARCHAR(255) NOT NULL,"
-           "task_num INTEGER CHECK (task_num BETWEEN 1 and 12))");
+    // Таблица users
+    query.exec("CREATE TABLE IF NOT EXISTS users ("
+               "id INTEGER PRIMARY KEY AUTOINCREMENT, "
+               "login VARCHAR(50) UNIQUE NOT NULL, "
+               "password VARCHAR(255) NOT NULL, "
+               "email VARCHAR(100), "
+               "role VARCHAR(20) DEFAULT 'user', "
+               "created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, "
+               "socket_id VARCHAR(20))");
 
-// Таблица user_results
-query.exec("CREATE TABLE IF NOT EXISTS user_results ("
-           "id INTEGER PRIMARY KEY AUTOINCREMENT, "
-           "user_id INTEGER NOT NULL, "
-           "task_id INTEGER NOT NULL, "
-           "is_correct BOOLEAN NOT NULL, "
-           "attempt_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP, "
-           "user_answer VARCHAR(255), "
-           "FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE, "
-           "FOREIGN KEY (task_id) REFERENCES tasks(id) ON DELETE CASCADE)");
+    // Таблица tasks
+    query.exec("CREATE TABLE IF NOT EXISTS tasks ("
+               "id INTEGER PRIMARY KEY AUTOINCREMENT,"
+               "task_text TEXT NOT NULL,"
+               "correct_answer VARCHAR(255) NOT NULL,"
+               "task_num INTEGER CHECK (task_num BETWEEN 1 and 12))");
+
+    // Таблица user_results
+    query.exec("CREATE TABLE IF NOT EXISTS user_results ("
+               "id INTEGER PRIMARY KEY AUTOINCREMENT, "
+               "user_id INTEGER NOT NULL, "
+               "task_id INTEGER NOT NULL, "
+               "is_correct BOOLEAN NOT NULL, "
+               "attempt_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP, "
+               "user_answer VARCHAR(255), "
+               "FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE, "
+               "FOREIGN KEY (task_id) REFERENCES tasks(id) ON DELETE CASCADE)");
+
+    // Проверяем, есть ли задания в таблице tasks
+    QSqlQuery checkTasks(db);
+    checkTasks.exec("SELECT COUNT(*) FROM tasks");
+    if (checkTasks.next() && checkTasks.value(0).toInt() == 0) {
+        // Добавляем тестовое задание, если таблица пуста
+        QSqlQuery insert(db);
+        insert.prepare("INSERT INTO tasks (task_text, correct_answer, task_num) "
+                       "VALUES ('Тестовое задание: 2+2=?', '4', 1)");
+        insert.exec();
+        qDebug() << "[TEST MODE] Added sample task to test database";
+    }
 }
 
 
@@ -165,7 +185,7 @@ bool Singleton::submit_answer(long socketDesc, int taskId, QString userAnswer){
 
     userAnswer.replace(',', '.');
     userAnswer.remove(' ');
-    
+
     bool isCorrect = (userAnswer == correct);
 
     //запись результата
