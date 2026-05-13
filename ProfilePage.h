@@ -20,6 +20,9 @@ public slots:
 private slots:
     void onStatsReceived(const QJsonObject &stats);
 
+protected:
+    void showEvent(QShowEvent *event) override;
+
 private:
     ApiClient *m_apiClient;
     int m_userId;
