@@ -1,4 +1,3 @@
-// taskspage.h
 #ifndef TASKSPAGE_H
 #define TASKSPAGE_H
 
@@ -7,9 +6,10 @@
 #include "userinfo.h"
 #include <QJsonObject>
 
-class QLabel;
 class QTextEdit;
 class QPushButton;
+class QSpinBox;
+class QLabel;
 
 class TasksPage : public QWidget
 {
@@ -21,7 +21,8 @@ public slots:
     void onUserChanged(const UserInfo &user);
 
 private slots:
-    void onGenerateTask();
+    void onRandomTask();
+    void onNumberedTask();
     void onSubmitAnswer();
     void onTaskReceived(const QJsonObject &task);
     void onAnswerResult(bool correct, const QString &message);
@@ -30,9 +31,12 @@ private:
     ApiClient *m_apiClient;
     int m_currentTaskId;
     int m_userId;
-    QLabel *m_taskLabel;
+
+    QTextEdit *m_taskEdit;
     QTextEdit *m_answerEdit;
-    QPushButton *m_generateButton;
+    QPushButton *m_randomButton;
+    QSpinBox *m_taskNumberSpin;
+    QPushButton *m_numberedButton;
     QPushButton *m_submitButton;
     QLabel *m_resultLabel;
 };
