@@ -40,6 +40,7 @@ class Singleton
         QString get_curr_user_stat(long);
         QString get_all_stat(long);
         void clear_socket_id(long);
+        QSqlDatabase& getDatabase() { return db; }
 };
 
 #endif
