@@ -2,10 +2,8 @@
 #define APICLIENT_H
 
 #include <QObject>
-#include <QNetworkAccessManager>
-#include <QNetworkReply>
-#include "userinfo.h"
 #include <QJsonObject>
+#include "userinfo.h"
 
 class ApiClient : public QObject
 {
@@ -16,7 +14,7 @@ public:
     void login(const QString &username, const QString &password);
     void registerUser(const QString &username, const QString &email, const QString &password);
     void logout(int userId);
-    void fetchRandomTask(int userId);
+    void fetchTask(int taskNumber);   // -1 = случайное, иначе номер задания (1..12)
     void submitAnswer(int userId, int taskId, const QString &answer);
     void fetchUserStats(int userId);
 
@@ -28,10 +26,12 @@ signals:
     void answerResult(bool correct, const QString &message);
 
 private slots:
-    void onReplyFinished(QNetworkReply *reply);
+    void onMessageFromServer(const QString &message);
 
 private:
-    QNetworkAccessManager *m_manager;
+    QString m_lastUsername;
+    QString m_lastEmail;
+    void sendCommand(const QString &cmd);
 };
 
 #endif // APICLIENT_H
