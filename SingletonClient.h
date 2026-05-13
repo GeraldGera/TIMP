@@ -8,8 +8,6 @@
 #include <QDebug>
 
 class SingletonClient;
-
-
 class SingletonDestroyer
 {
 private:
@@ -26,29 +24,25 @@ private:
     static SingletonClient* p_instance;
     static SingletonDestroyer destroyer;
     QTcpSocket* mTcpSocket;
-
+    bool m_isConnected;
 
     explicit SingletonClient(QObject *parent = nullptr);
-
     SingletonClient(const SingletonClient&) = delete;
     SingletonClient& operator=(const SingletonClient&) = delete;
     ~SingletonClient();
-
     friend class SingletonDestroyer;
 
 public:
-
     static SingletonClient* getInstance();
-
-
     void sendMessageToServer(const QString& query);
 
 signals:
-
     void messageFromServer(const QString& msg);
 
 private slots:
     void slotServerRead();
+    void onConnected();
+    void onErrorOccurred(QAbstractSocket::SocketError);
 };
 
-#endif
+#endif // SINGLETONCLIENT_H
