@@ -98,6 +98,7 @@ void ApiClient::onMessageFromServer(const QString &message)
         QStringList parts = trimmed.split("||");
         if (parts.size() >= 3) {
             QJsonObject stats;
+            stats["login"] = parts[0];
             stats["solved"] = parts[1].toInt();
             stats["total"] = parts[2].toInt();
             emit statsReceived(stats);
