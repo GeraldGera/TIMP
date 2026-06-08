@@ -10,7 +10,7 @@ self-study\_project
 
 Чтобы просмотреть интерактивные веб-страницы документации, скачайте репозиторий (кнопка \*\*Code\*\* -> \*\*Download ZIP\*\*) и откройте файлы `index.html` локально на компьютере:
 
-\* \*\*Документация Сервера:\*\* в папке `TIMP-main/html/index.html`
+[Документация Сервера:](TIMP-main/html/index.html)
 
-\* \*\*Документация Клиента:\*\* в папке `TIMP-client-isaeva/html/index.html`
+[Документация Клиента:](TIMP-client-isaeva/html/index.html)
 
