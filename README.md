@@ -9,5 +9,5 @@ self-study\_project
 
 [Документация Сервера:](TIMP-main/html/index.html)
 
-[Документация Клиента:](TIMP-client-isaeva/html/index.html)
+[Документация Клиента:](TIMP-client/TIMP-client-isaeva/html/index.html)
 
