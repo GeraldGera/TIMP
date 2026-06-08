@@ -11,3 +11,4 @@ self-study\_project
 
 [Документация Клиента:](TIMP-client/TIMP-client-isaeva/html/index.html)
 
+[Тест-план/Тест-кейс+дефекты:](testing/testing.md)
