@@ -1,0 +1,42 @@
+\doxysection{Api\+Client.\+h}
+\hypertarget{_api_client_8h_source}{}\label{_api_client_8h_source}\doxymbox{\hyperlink{_api_client_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ APICLIENT\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ APICLIENT\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <QObject>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <QJsonObject>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{userinfo_8h}{userinfo.h}}"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_api_client_a7ac17ab761c4ee56fa63802573b343e3}{ApiClient}}\ :\ \textcolor{keyword}{public}\ QObject}
+\DoxyCodeLine{00009\ \{}
+\DoxyCodeLine{00010\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00011\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keyword}{explicit}\ \doxymbox{\hyperlink{class_api_client_a7ac17ab761c4ee56fa63802573b343e3}{ApiClient}}(QObject\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_api_client_a3574d11a078c15031698906d6e8210ee}{login}}(\textcolor{keyword}{const}\ QString\ \&username,\ \textcolor{keyword}{const}\ QString\ \&password);}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_api_client_aa05c28b3fba33d87f51455642a5b5429}{registerUser}}(\textcolor{keyword}{const}\ QString\ \&username,\ \textcolor{keyword}{const}\ QString\ \&email,\ \textcolor{keyword}{const}\ QString\ \&password);}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_api_client_a19d7dcc1e405eb26c7c520541515017a}{logout}}(\textcolor{keywordtype}{int}\ userId);}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_api_client_aed07bb3d615aaa63c7f8090a2ba96ea5}{fetchTask}}(\textcolor{keywordtype}{int}\ taskNumber);\ \ \ \textcolor{comment}{//\ -\/1\ =\ случайное,\ иначе\ номер\ задания\ (1..12)}}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_api_client_a0cfa861767baf9d71593f3c425bc6f9e}{submitAnswer}}(\textcolor{keywordtype}{int}\ userId,\ \textcolor{keywordtype}{int}\ taskId,\ \textcolor{keyword}{const}\ QString\ \&answer);}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_api_client_a48bb2fb7612fff0ae833e49e0087e0e1}{fetchUserStats}}(\textcolor{keywordtype}{int}\ userId);}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ signals:}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_api_client_a50d8d49c6d5774749f067d00fe7359f3}{loginSuccess}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_user_info}{UserInfo}}\ \&user);}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_api_client_a48bb52ad1a174928d1f788a296987dc1}{loginError}}(\textcolor{keyword}{const}\ QString\ \&message);}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_api_client_a918632dfb0f49ee0c05c908baf831ada}{taskReceived}}(\textcolor{keyword}{const}\ QJsonObject\ \&task);}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_api_client_a1ed875dad86d18f5d9bfb03060363da9}{statsReceived}}(\textcolor{keyword}{const}\ QJsonObject\ \&stats);}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_api_client_a1ee64c4fee5665fbd88f376c3a862c1d}{answerResult}}(\textcolor{keywordtype}{bool}\ correct,\ \textcolor{keyword}{const}\ QString\ \&message);}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{private}\ slots:}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ onMessageFromServer(\textcolor{keyword}{const}\ QString\ \&message);}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00032\ \ \ \ \ QString\ m\_lastUsername;}
+\DoxyCodeLine{00033\ \ \ \ \ QString\ m\_lastEmail;}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ sendCommand(\textcolor{keyword}{const}\ QString\ \&cmd);}
+\DoxyCodeLine{00035\ \};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ APICLIENT\_H}}
+
+\end{DoxyCode}

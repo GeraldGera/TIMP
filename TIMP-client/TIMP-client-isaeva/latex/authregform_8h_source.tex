@@ -1,0 +1,42 @@
+\doxysection{authregform.\+h}
+\hypertarget{authregform_8h_source}{}\label{authregform_8h_source}\doxymbox{\hyperlink{authregform_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ AUTHEGFORM\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ AUTHEGFORM\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <QWidget>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_api_client_8h}{apiclient.h}}"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }QLineEdit;}
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }QPushButton;}
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }QLabel;}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_auth_reg_form_a96e04e93eafacdf04a2f51b78fe8cbe1}{AuthRegForm}}\ :\ \textcolor{keyword}{public}\ QWidget}
+\DoxyCodeLine{00012\ \{}
+\DoxyCodeLine{00013\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{explicit}\ \doxymbox{\hyperlink{class_auth_reg_form_a96e04e93eafacdf04a2f51b78fe8cbe1}{AuthRegForm}}(\doxymbox{\hyperlink{class_api_client}{ApiClient}}\ *apiClient,\ QWidget\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ signals:}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_auth_reg_form_a808ed056109c6da391eda1dc1c7914d3}{userLoggedIn}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_user_info}{UserInfo}}\ \&user);}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_auth_reg_form_aa5b7553ca25e967e2c0279abf213ede3}{userLoggedOut}}();}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{private}\ slots:}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{void}\ onLoginClicked();}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{void}\ onRegisterClicked();}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ onLoginSuccess(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_user_info}{UserInfo}}\ \&user);}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ onLoginError(\textcolor{keyword}{const}\ QString\ \&message);}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00028\ \ \ \ \ \doxymbox{\hyperlink{class_api_client}{ApiClient}}\ *m\_apiClient;}
+\DoxyCodeLine{00029\ \ \ \ \ QLineEdit\ *m\_usernameEdit;}
+\DoxyCodeLine{00030\ \ \ \ \ QLineEdit\ *m\_passwordEdit;}
+\DoxyCodeLine{00031\ \ \ \ \ QLineEdit\ *m\_emailEdit;}
+\DoxyCodeLine{00032\ \ \ \ \ QPushButton\ *m\_loginButton;}
+\DoxyCodeLine{00033\ \ \ \ \ QPushButton\ *m\_registerButton;}
+\DoxyCodeLine{00034\ \ \ \ \ QLabel\ *m\_statusLabel;}
+\DoxyCodeLine{00035\ \};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ AUTHEGFORM\_H}}
+
+\end{DoxyCode}

@@ -1,0 +1,67 @@
+\doxysection{functionstoserver.\+h File Reference}
+\hypertarget{functionstoserver_8h}{}\label{functionstoserver_8h}\index{functionstoserver.h@{functionstoserver.h}}
+{\ttfamily \+\#include $<$QString$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+QString \doxymbox{\hyperlink{functionstoserver_8h_a12e0908707d70cb5dcaa7150a05230e8}{reg}} (const QString \&login, const QString \&pass, const QString \&email, long socket\+Desc)
+\item 
+QString \doxymbox{\hyperlink{functionstoserver_8h_a216ab78a4438c4b02c247f66a4cf74a3}{auth}} (const QString \&login, const QString \&pass, long socket\+Desc)
+\item 
+QString \doxymbox{\hyperlink{functionstoserver_8h_a63041127c4699d69ec7326ed4144286f}{get\+Task}} (long socket\+Desc, int type\+\_\+num)
+\item 
+QString \doxymbox{\hyperlink{functionstoserver_8h_a66bc7885a0951e13814d2450278cfb0c}{submit\+Answer}} (long socket\+Desc, int task\+Id, const QString \&answer)
+\item 
+QString \doxymbox{\hyperlink{functionstoserver_8h_a3a12bd613b29542c05afa9419c9f9134}{get\+Stat}} (long socket\+Desc)
+\item 
+QString \doxymbox{\hyperlink{functionstoserver_8h_afd3bf34bbc4a806b21cf8ace1483c189}{get\+All\+Stat}} (long socket\+Desc)
+\item 
+QString \doxymbox{\hyperlink{functionstoserver_8h_a9824b21af92d5d75cc51ed14dac9abdb}{parsing}} (const QString \&message, long socket\+Desc)
+\end{DoxyCompactItemize}
+
+
+\label{functionstoserver_8h_doc-func-members}
+\Hypertarget{functionstoserver_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{functionstoserver_8h_a216ab78a4438c4b02c247f66a4cf74a3}\index{functionstoserver.h@{functionstoserver.h}!auth@{auth}}
+\index{auth@{auth}!functionstoserver.h@{functionstoserver.h}}
+\doxysubsubsection{\texorpdfstring{auth()}{auth()}}
+{\footnotesize\ttfamily \label{functionstoserver_8h_a216ab78a4438c4b02c247f66a4cf74a3} 
+QString auth (\begin{DoxyParamCaption}\item[{const QString \&}]{login}{, }\item[{const QString \&}]{pass}{, }\item[{long}]{socket\+Desc}{}\end{DoxyParamCaption})}
+
+\Hypertarget{functionstoserver_8h_afd3bf34bbc4a806b21cf8ace1483c189}\index{functionstoserver.h@{functionstoserver.h}!getAllStat@{getAllStat}}
+\index{getAllStat@{getAllStat}!functionstoserver.h@{functionstoserver.h}}
+\doxysubsubsection{\texorpdfstring{getAllStat()}{getAllStat()}}
+{\footnotesize\ttfamily \label{functionstoserver_8h_afd3bf34bbc4a806b21cf8ace1483c189} 
+QString get\+All\+Stat (\begin{DoxyParamCaption}\item[{long}]{socket\+Desc}{}\end{DoxyParamCaption})}
+
+\Hypertarget{functionstoserver_8h_a3a12bd613b29542c05afa9419c9f9134}\index{functionstoserver.h@{functionstoserver.h}!getStat@{getStat}}
+\index{getStat@{getStat}!functionstoserver.h@{functionstoserver.h}}
+\doxysubsubsection{\texorpdfstring{getStat()}{getStat()}}
+{\footnotesize\ttfamily \label{functionstoserver_8h_a3a12bd613b29542c05afa9419c9f9134} 
+QString get\+Stat (\begin{DoxyParamCaption}\item[{long}]{socket\+Desc}{}\end{DoxyParamCaption})}
+
+\Hypertarget{functionstoserver_8h_a63041127c4699d69ec7326ed4144286f}\index{functionstoserver.h@{functionstoserver.h}!getTask@{getTask}}
+\index{getTask@{getTask}!functionstoserver.h@{functionstoserver.h}}
+\doxysubsubsection{\texorpdfstring{getTask()}{getTask()}}
+{\footnotesize\ttfamily \label{functionstoserver_8h_a63041127c4699d69ec7326ed4144286f} 
+QString get\+Task (\begin{DoxyParamCaption}\item[{long}]{socket\+Desc}{, }\item[{int}]{type\+\_\+num}{}\end{DoxyParamCaption})}
+
+\Hypertarget{functionstoserver_8h_a9824b21af92d5d75cc51ed14dac9abdb}\index{functionstoserver.h@{functionstoserver.h}!parsing@{parsing}}
+\index{parsing@{parsing}!functionstoserver.h@{functionstoserver.h}}
+\doxysubsubsection{\texorpdfstring{parsing()}{parsing()}}
+{\footnotesize\ttfamily \label{functionstoserver_8h_a9824b21af92d5d75cc51ed14dac9abdb} 
+QString parsing (\begin{DoxyParamCaption}\item[{const QString \&}]{message}{, }\item[{long}]{socket\+Desc}{}\end{DoxyParamCaption})}
+
+\Hypertarget{functionstoserver_8h_a12e0908707d70cb5dcaa7150a05230e8}\index{functionstoserver.h@{functionstoserver.h}!reg@{reg}}
+\index{reg@{reg}!functionstoserver.h@{functionstoserver.h}}
+\doxysubsubsection{\texorpdfstring{reg()}{reg()}}
+{\footnotesize\ttfamily \label{functionstoserver_8h_a12e0908707d70cb5dcaa7150a05230e8} 
+QString reg (\begin{DoxyParamCaption}\item[{const QString \&}]{login}{, }\item[{const QString \&}]{pass}{, }\item[{const QString \&}]{email}{, }\item[{long}]{socket\+Desc}{}\end{DoxyParamCaption})}
+
+\Hypertarget{functionstoserver_8h_a66bc7885a0951e13814d2450278cfb0c}\index{functionstoserver.h@{functionstoserver.h}!submitAnswer@{submitAnswer}}
+\index{submitAnswer@{submitAnswer}!functionstoserver.h@{functionstoserver.h}}
+\doxysubsubsection{\texorpdfstring{submitAnswer()}{submitAnswer()}}
+{\footnotesize\ttfamily \label{functionstoserver_8h_a66bc7885a0951e13814d2450278cfb0c} 
+QString submit\+Answer (\begin{DoxyParamCaption}\item[{long}]{socket\+Desc}{, }\item[{int}]{task\+Id}{, }\item[{const QString \&}]{answer}{}\end{DoxyParamCaption})}
+

@@ -1,0 +1,13 @@
+debug/ApiClient.o
+debug/AuthRegForm.o
+debug/ProfilePage.o
+debug/TasksPage.o
+debug/main.o
+debug/mainwindow.o
+debug/singletonclient.o
+debug/moc_ApiClient.o
+debug/moc_AuthRegForm.o
+debug/moc_ProfilePage.o
+debug/moc_SingletonClient.o
+debug/moc_TasksPage.o
+debug/moc_mainwindow.o

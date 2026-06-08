@@ -1,0 +1,130 @@
+\doxysection{Api\+Client Class Reference}
+\hypertarget{class_api_client}{}\label{class_api_client}\index{ApiClient@{ApiClient}}
+
+
+{\ttfamily \+\#include $<$Api\+Client.\+h$>$}
+
+Inheritance diagram for Api\+Client:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_api_client}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{class_api_client_a50d8d49c6d5774749f067d00fe7359f3}{login\+Success}} (const \doxymbox{\hyperlink{struct_user_info}{User\+Info}} \&user)
+\item 
+void \doxymbox{\hyperlink{class_api_client_a48bb52ad1a174928d1f788a296987dc1}{login\+Error}} (const QString \&message)
+\item 
+void \doxymbox{\hyperlink{class_api_client_a918632dfb0f49ee0c05c908baf831ada}{task\+Received}} (const QJson\+Object \&task)
+\item 
+void \doxymbox{\hyperlink{class_api_client_a1ed875dad86d18f5d9bfb03060363da9}{stats\+Received}} (const QJson\+Object \&stats)
+\item 
+void \doxymbox{\hyperlink{class_api_client_a1ee64c4fee5665fbd88f376c3a862c1d}{answer\+Result}} (bool correct, const QString \&message)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_api_client_a7ac17ab761c4ee56fa63802573b343e3}{Api\+Client}} (QObject \texorpdfstring{$\ast$}{*}parent=nullptr)
+\item 
+void \doxymbox{\hyperlink{class_api_client_a3574d11a078c15031698906d6e8210ee}{login}} (const QString \&username, const QString \&password)
+\item 
+void \doxymbox{\hyperlink{class_api_client_aa05c28b3fba33d87f51455642a5b5429}{register\+User}} (const QString \&username, const QString \&email, const QString \&password)
+\item 
+void \doxymbox{\hyperlink{class_api_client_a19d7dcc1e405eb26c7c520541515017a}{logout}} (int user\+Id)
+\item 
+void \doxymbox{\hyperlink{class_api_client_aed07bb3d615aaa63c7f8090a2ba96ea5}{fetch\+Task}} (int task\+Number)
+\item 
+void \doxymbox{\hyperlink{class_api_client_a0cfa861767baf9d71593f3c425bc6f9e}{submit\+Answer}} (int user\+Id, int task\+Id, const QString \&answer)
+\item 
+void \doxymbox{\hyperlink{class_api_client_a48bb2fb7612fff0ae833e49e0087e0e1}{fetch\+User\+Stats}} (int user\+Id)
+\end{DoxyCompactItemize}
+
+
+\label{class_api_client_doc-constructors}
+\Hypertarget{class_api_client_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_api_client_a7ac17ab761c4ee56fa63802573b343e3}\index{ApiClient@{ApiClient}!ApiClient@{ApiClient}}
+\index{ApiClient@{ApiClient}!ApiClient@{ApiClient}}
+\doxysubsubsection{\texorpdfstring{ApiClient()}{ApiClient()}}
+{\footnotesize\ttfamily \label{class_api_client_a7ac17ab761c4ee56fa63802573b343e3} 
+Api\+Client::\+\+Api\+Client (\begin{DoxyParamCaption}\item[{QObject \texorpdfstring{$\ast$}{*}}]{parent}{ = {\ttfamily nullptr}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+\label{class_api_client_doc-func-members}
+\Hypertarget{class_api_client_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_api_client_a1ee64c4fee5665fbd88f376c3a862c1d}\index{ApiClient@{ApiClient}!answerResult@{answerResult}}
+\index{answerResult@{answerResult}!ApiClient@{ApiClient}}
+\doxysubsubsection{\texorpdfstring{answerResult}{answerResult}}
+{\footnotesize\ttfamily \label{class_api_client_a1ee64c4fee5665fbd88f376c3a862c1d} 
+void Api\+Client::\+answer\+Result (\begin{DoxyParamCaption}\item[{bool}]{correct}{, }\item[{const QString \&}]{message}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+\Hypertarget{class_api_client_aed07bb3d615aaa63c7f8090a2ba96ea5}\index{ApiClient@{ApiClient}!fetchTask@{fetchTask}}
+\index{fetchTask@{fetchTask}!ApiClient@{ApiClient}}
+\doxysubsubsection{\texorpdfstring{fetchTask()}{fetchTask()}}
+{\footnotesize\ttfamily \label{class_api_client_aed07bb3d615aaa63c7f8090a2ba96ea5} 
+void Api\+Client::\+fetch\+Task (\begin{DoxyParamCaption}\item[{int}]{task\+Number}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_api_client_a48bb2fb7612fff0ae833e49e0087e0e1}\index{ApiClient@{ApiClient}!fetchUserStats@{fetchUserStats}}
+\index{fetchUserStats@{fetchUserStats}!ApiClient@{ApiClient}}
+\doxysubsubsection{\texorpdfstring{fetchUserStats()}{fetchUserStats()}}
+{\footnotesize\ttfamily \label{class_api_client_a48bb2fb7612fff0ae833e49e0087e0e1} 
+void Api\+Client::\+fetch\+User\+Stats (\begin{DoxyParamCaption}\item[{int}]{user\+Id}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_api_client_a3574d11a078c15031698906d6e8210ee}\index{ApiClient@{ApiClient}!login@{login}}
+\index{login@{login}!ApiClient@{ApiClient}}
+\doxysubsubsection{\texorpdfstring{login()}{login()}}
+{\footnotesize\ttfamily \label{class_api_client_a3574d11a078c15031698906d6e8210ee} 
+void Api\+Client::\+login (\begin{DoxyParamCaption}\item[{const QString \&}]{username}{, }\item[{const QString \&}]{password}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_api_client_a48bb52ad1a174928d1f788a296987dc1}\index{ApiClient@{ApiClient}!loginError@{loginError}}
+\index{loginError@{loginError}!ApiClient@{ApiClient}}
+\doxysubsubsection{\texorpdfstring{loginError}{loginError}}
+{\footnotesize\ttfamily \label{class_api_client_a48bb52ad1a174928d1f788a296987dc1} 
+void Api\+Client::\+login\+Error (\begin{DoxyParamCaption}\item[{const QString \&}]{message}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+\Hypertarget{class_api_client_a50d8d49c6d5774749f067d00fe7359f3}\index{ApiClient@{ApiClient}!loginSuccess@{loginSuccess}}
+\index{loginSuccess@{loginSuccess}!ApiClient@{ApiClient}}
+\doxysubsubsection{\texorpdfstring{loginSuccess}{loginSuccess}}
+{\footnotesize\ttfamily \label{class_api_client_a50d8d49c6d5774749f067d00fe7359f3} 
+void Api\+Client::\+login\+Success (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_user_info}{User\+Info}} \&}]{user}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+\Hypertarget{class_api_client_a19d7dcc1e405eb26c7c520541515017a}\index{ApiClient@{ApiClient}!logout@{logout}}
+\index{logout@{logout}!ApiClient@{ApiClient}}
+\doxysubsubsection{\texorpdfstring{logout()}{logout()}}
+{\footnotesize\ttfamily \label{class_api_client_a19d7dcc1e405eb26c7c520541515017a} 
+void Api\+Client::\+logout (\begin{DoxyParamCaption}\item[{int}]{user\+Id}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_api_client_aa05c28b3fba33d87f51455642a5b5429}\index{ApiClient@{ApiClient}!registerUser@{registerUser}}
+\index{registerUser@{registerUser}!ApiClient@{ApiClient}}
+\doxysubsubsection{\texorpdfstring{registerUser()}{registerUser()}}
+{\footnotesize\ttfamily \label{class_api_client_aa05c28b3fba33d87f51455642a5b5429} 
+void Api\+Client::\+register\+User (\begin{DoxyParamCaption}\item[{const QString \&}]{username}{, }\item[{const QString \&}]{email}{, }\item[{const QString \&}]{password}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_api_client_a1ed875dad86d18f5d9bfb03060363da9}\index{ApiClient@{ApiClient}!statsReceived@{statsReceived}}
+\index{statsReceived@{statsReceived}!ApiClient@{ApiClient}}
+\doxysubsubsection{\texorpdfstring{statsReceived}{statsReceived}}
+{\footnotesize\ttfamily \label{class_api_client_a1ed875dad86d18f5d9bfb03060363da9} 
+void Api\+Client::\+stats\+Received (\begin{DoxyParamCaption}\item[{const QJson\+Object \&}]{stats}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+\Hypertarget{class_api_client_a0cfa861767baf9d71593f3c425bc6f9e}\index{ApiClient@{ApiClient}!submitAnswer@{submitAnswer}}
+\index{submitAnswer@{submitAnswer}!ApiClient@{ApiClient}}
+\doxysubsubsection{\texorpdfstring{submitAnswer()}{submitAnswer()}}
+{\footnotesize\ttfamily \label{class_api_client_a0cfa861767baf9d71593f3c425bc6f9e} 
+void Api\+Client::\+submit\+Answer (\begin{DoxyParamCaption}\item[{int}]{user\+Id}{, }\item[{int}]{task\+Id}{, }\item[{const QString \&}]{answer}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_api_client_a918632dfb0f49ee0c05c908baf831ada}\index{ApiClient@{ApiClient}!taskReceived@{taskReceived}}
+\index{taskReceived@{taskReceived}!ApiClient@{ApiClient}}
+\doxysubsubsection{\texorpdfstring{taskReceived}{taskReceived}}
+{\footnotesize\ttfamily \label{class_api_client_a918632dfb0f49ee0c05c908baf831ada} 
+void Api\+Client::\+task\+Received (\begin{DoxyParamCaption}\item[{const QJson\+Object \&}]{task}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{_api_client_8h}{Api\+Client.\+h}}\item 
+\doxymbox{\hyperlink{_api_client_8cpp}{Api\+Client.\+cpp}}\end{DoxyCompactItemize}

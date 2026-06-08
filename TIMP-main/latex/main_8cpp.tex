@@ -1,0 +1,52 @@
+\doxysection{main.\+cpp File Reference}
+\hypertarget{main_8cpp}{}\label{main_8cpp}\index{main.cpp@{main.cpp}}
+{\ttfamily \+\#include $<$QCore\+Application$>$}\newline
+{\ttfamily \+\#include $<$Qt\+Test$>$}\newline
+{\ttfamily \+\#include $<$QSql\+Database$>$}\newline
+{\ttfamily \+\#include $<$QSql\+Query$>$}\newline
+{\ttfamily \+\#include "{}mytcpserver.\+h"{}}\newline
+{\ttfamily \+\#include "{}Singleton.\+h"{}}\newline
+{\ttfamily \+\#include "{}main.\+moc"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \doxymbox{\hyperlink{class_server_auto_tests}{Server\+Auto\+Tests}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \doxymbox{\hyperlink{main_8cpp_aa5464c628e6a6b6eef93ec39dea3d1c7}{check\+Ege\+Answer}} (int task\+\_\+num, const std::\+string \&user\+\_\+answer)
+\begin{DoxyCompactList}\small\item\em Функция проверки ответов на 4 задачи из второй части ЕГЭ. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char \texorpdfstring{$\ast$}{*}argv\+[$\,$]\+)
+\end{DoxyCompactItemize}
+
+
+\label{main_8cpp_doc-func-members}
+\Hypertarget{main_8cpp_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{main_8cpp_aa5464c628e6a6b6eef93ec39dea3d1c7}\index{main.cpp@{main.cpp}!checkEgeAnswer@{checkEgeAnswer}}
+\index{checkEgeAnswer@{checkEgeAnswer}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{checkEgeAnswer()}{checkEgeAnswer()}}
+{\footnotesize\ttfamily \label{main_8cpp_aa5464c628e6a6b6eef93ec39dea3d1c7} 
+bool check\+Ege\+Answer (\begin{DoxyParamCaption}\item[{int}]{task\+\_\+num}{, }\item[{const std::\+string \&}]{user\+\_\+answer}{}\end{DoxyParamCaption})}
+
+
+
+Функция проверки ответов на 4 задачи из второй части ЕГЭ. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em task\+\_\+num} & Номер задачи (24, 25, 26, 27). \\
+\hline
+{\em user\+\_\+answer} & Строка с ответом, пришедшая от клиента. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true, если ответ верный, иначе false. 
+\end{DoxyReturn}
+\Hypertarget{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}\index{main.cpp@{main.cpp}!main@{main}}
+\index{main@{main}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97} 
+int main (\begin{DoxyParamCaption}\item[{int}]{argc}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{argv}{\+[$\,$]\+}\end{DoxyParamCaption})}
+

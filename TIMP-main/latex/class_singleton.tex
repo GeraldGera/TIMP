@@ -1,0 +1,143 @@
+\doxysection{Singleton Class Reference}
+\hypertarget{class_singleton}{}\label{class_singleton}\index{Singleton@{Singleton}}
+
+
+{\ttfamily \+\#include $<$Singleton.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \doxymbox{\hyperlink{class_singleton_afc04abebd4fa6551e225049cbdffc7cc}{is\+\_\+auth\+\_\+ok}} (QString, QString, long)
+\item 
+bool \doxymbox{\hyperlink{class_singleton_ae34ee54a2fff3a9753b41af50333fc3e}{is\+\_\+reg\+\_\+ok}} (QString, QString, QString, long)
+\item 
+QString \doxymbox{\hyperlink{class_singleton_a0e32d2d280715f7269e3e83c2c9a9eef}{get\+\_\+task\+\_\+for\+\_\+user}} (long, int)
+\item 
+bool \doxymbox{\hyperlink{class_singleton_a092346a2e7e6ce1e5e958dcaebfcb7ca}{submit\+\_\+answer}} (long, int, QString)
+\item 
+QString \doxymbox{\hyperlink{class_singleton_a98f44f08e736c6c396c77157e69706a0}{get\+\_\+curr\+\_\+user\+\_\+stat}} (long)
+\item 
+QString \doxymbox{\hyperlink{class_singleton_aca674d5796eef089fffb5470ccad7623}{get\+\_\+all\+\_\+stat}} (long)
+\item 
+QString \doxymbox{\hyperlink{class_singleton_af34be422d8503c18c8b8ab84c8d21f82}{handle\+Request}} (const QString \&json\+Request)
+\item 
+void \doxymbox{\hyperlink{class_singleton_a44ba6998ea86365fe75d4c0949524958}{clear\+\_\+socket\+\_\+id}} (long)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \doxymbox{\hyperlink{class_singleton}{Singleton}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_singleton_ae5cc005e947b0f851ea8db2d97123d66}{get\+Instance}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_singleton_a0e21dfc9afab45b0a6a70f6665ce5819}{Singleton}} ()
+\item 
+\doxymbox{\hyperlink{class_singleton_aa5473e882cb01b29ea07c86faff0e407}{Singleton}} (const \doxymbox{\hyperlink{class_singleton}{Singleton}} \&)=delete
+\item 
+\doxymbox{\hyperlink{class_singleton_a543d81b5f1458e51fe1a56082b6afccc}{\texorpdfstring{$\sim$}{\string~}\+Singleton}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \doxymbox{\hyperlink{class_singleton_aa93ce997b9645496c0e17460fba08432}{Singleton\+Destroyer}}
+\end{DoxyCompactItemize}
+
+
+\label{class_singleton_doc-constructors}
+\Hypertarget{class_singleton_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_singleton_a0e21dfc9afab45b0a6a70f6665ce5819}\index{Singleton@{Singleton}!Singleton@{Singleton}}
+\index{Singleton@{Singleton}!Singleton@{Singleton}}
+\doxysubsubsection{\texorpdfstring{Singleton()}{Singleton()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_singleton_a0e21dfc9afab45b0a6a70f6665ce5819} 
+Singleton::\+\+Singleton (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_singleton_aa5473e882cb01b29ea07c86faff0e407}\index{Singleton@{Singleton}!Singleton@{Singleton}}
+\index{Singleton@{Singleton}!Singleton@{Singleton}}
+\doxysubsubsection{\texorpdfstring{Singleton()}{Singleton()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_singleton_aa5473e882cb01b29ea07c86faff0e407} 
+Singleton::\+\+Singleton (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_singleton}{Singleton}} \&}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [delete]}}
+
+\Hypertarget{class_singleton_a543d81b5f1458e51fe1a56082b6afccc}\index{Singleton@{Singleton}!````~Singleton@{\texorpdfstring{$\sim$}{\string~}Singleton}}
+\index{````~Singleton@{\texorpdfstring{$\sim$}{\string~}Singleton}!Singleton@{Singleton}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Singleton()}{\string~Singleton()}}
+{\footnotesize\ttfamily \label{class_singleton_a543d81b5f1458e51fe1a56082b6afccc} 
+Singleton::\+\texorpdfstring{$\sim$}{\string~}\+Singleton (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+\label{class_singleton_doc-func-members}
+\Hypertarget{class_singleton_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_singleton_a44ba6998ea86365fe75d4c0949524958}\index{Singleton@{Singleton}!clear\_socket\_id@{clear\_socket\_id}}
+\index{clear\_socket\_id@{clear\_socket\_id}!Singleton@{Singleton}}
+\doxysubsubsection{\texorpdfstring{clear\_socket\_id()}{clear\_socket\_id()}}
+{\footnotesize\ttfamily \label{class_singleton_a44ba6998ea86365fe75d4c0949524958} 
+void Singleton::\+clear\+\_\+socket\+\_\+id (\begin{DoxyParamCaption}\item[{long}]{socket\+Desc}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_singleton_aca674d5796eef089fffb5470ccad7623}\index{Singleton@{Singleton}!get\_all\_stat@{get\_all\_stat}}
+\index{get\_all\_stat@{get\_all\_stat}!Singleton@{Singleton}}
+\doxysubsubsection{\texorpdfstring{get\_all\_stat()}{get\_all\_stat()}}
+{\footnotesize\ttfamily \label{class_singleton_aca674d5796eef089fffb5470ccad7623} 
+QString Singleton::\+get\+\_\+all\+\_\+stat (\begin{DoxyParamCaption}\item[{long}]{socket\+Desc}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_singleton_a98f44f08e736c6c396c77157e69706a0}\index{Singleton@{Singleton}!get\_curr\_user\_stat@{get\_curr\_user\_stat}}
+\index{get\_curr\_user\_stat@{get\_curr\_user\_stat}!Singleton@{Singleton}}
+\doxysubsubsection{\texorpdfstring{get\_curr\_user\_stat()}{get\_curr\_user\_stat()}}
+{\footnotesize\ttfamily \label{class_singleton_a98f44f08e736c6c396c77157e69706a0} 
+QString Singleton::\+get\+\_\+curr\+\_\+user\+\_\+stat (\begin{DoxyParamCaption}\item[{long}]{socket\+Desc}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_singleton_a0e32d2d280715f7269e3e83c2c9a9eef}\index{Singleton@{Singleton}!get\_task\_for\_user@{get\_task\_for\_user}}
+\index{get\_task\_for\_user@{get\_task\_for\_user}!Singleton@{Singleton}}
+\doxysubsubsection{\texorpdfstring{get\_task\_for\_user()}{get\_task\_for\_user()}}
+{\footnotesize\ttfamily \label{class_singleton_a0e32d2d280715f7269e3e83c2c9a9eef} 
+QString Singleton::\+get\+\_\+task\+\_\+for\+\_\+user (\begin{DoxyParamCaption}\item[{long}]{socket\+Desc}{, }\item[{int}]{task\+Id}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_singleton_ae5cc005e947b0f851ea8db2d97123d66}\index{Singleton@{Singleton}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!Singleton@{Singleton}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily \label{class_singleton_ae5cc005e947b0f851ea8db2d97123d66} 
+\doxymbox{\hyperlink{class_singleton}{Singleton}} \texorpdfstring{$\ast$}{*} Singleton::\+get\+Instance (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{class_singleton_af34be422d8503c18c8b8ab84c8d21f82}\index{Singleton@{Singleton}!handleRequest@{handleRequest}}
+\index{handleRequest@{handleRequest}!Singleton@{Singleton}}
+\doxysubsubsection{\texorpdfstring{handleRequest()}{handleRequest()}}
+{\footnotesize\ttfamily \label{class_singleton_af34be422d8503c18c8b8ab84c8d21f82} 
+QString Singleton::\+handle\+Request (\begin{DoxyParamCaption}\item[{const QString \&}]{json\+Request}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_singleton_afc04abebd4fa6551e225049cbdffc7cc}\index{Singleton@{Singleton}!is\_auth\_ok@{is\_auth\_ok}}
+\index{is\_auth\_ok@{is\_auth\_ok}!Singleton@{Singleton}}
+\doxysubsubsection{\texorpdfstring{is\_auth\_ok()}{is\_auth\_ok()}}
+{\footnotesize\ttfamily \label{class_singleton_afc04abebd4fa6551e225049cbdffc7cc} 
+bool Singleton::\+is\+\_\+auth\+\_\+ok (\begin{DoxyParamCaption}\item[{QString}]{login}{, }\item[{QString}]{pass}{, }\item[{long}]{socket\+Desc}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_singleton_ae34ee54a2fff3a9753b41af50333fc3e}\index{Singleton@{Singleton}!is\_reg\_ok@{is\_reg\_ok}}
+\index{is\_reg\_ok@{is\_reg\_ok}!Singleton@{Singleton}}
+\doxysubsubsection{\texorpdfstring{is\_reg\_ok()}{is\_reg\_ok()}}
+{\footnotesize\ttfamily \label{class_singleton_ae34ee54a2fff3a9753b41af50333fc3e} 
+bool Singleton::\+is\+\_\+reg\+\_\+ok (\begin{DoxyParamCaption}\item[{QString}]{login}{, }\item[{QString}]{pass}{, }\item[{QString}]{email}{, }\item[{long}]{socket\+Desc}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_singleton_a092346a2e7e6ce1e5e958dcaebfcb7ca}\index{Singleton@{Singleton}!submit\_answer@{submit\_answer}}
+\index{submit\_answer@{submit\_answer}!Singleton@{Singleton}}
+\doxysubsubsection{\texorpdfstring{submit\_answer()}{submit\_answer()}}
+{\footnotesize\ttfamily \label{class_singleton_a092346a2e7e6ce1e5e958dcaebfcb7ca} 
+bool Singleton::\+submit\+\_\+answer (\begin{DoxyParamCaption}\item[{long}]{socket\+Desc}{, }\item[{int}]{task\+Id}{, }\item[{QString}]{user\+Answer}{}\end{DoxyParamCaption})}
+
+
+
+\label{class_singleton_doc-related-members}
+\Hypertarget{class_singleton_doc-related-members}
+\doxysubsection{Friends And Related Symbol Documentation}
+\Hypertarget{class_singleton_aa93ce997b9645496c0e17460fba08432}\index{Singleton@{Singleton}!SingletonDestroyer@{SingletonDestroyer}}
+\index{SingletonDestroyer@{SingletonDestroyer}!Singleton@{Singleton}}
+\doxysubsubsection{\texorpdfstring{SingletonDestroyer}{SingletonDestroyer}}
+{\footnotesize\ttfamily \label{class_singleton_aa93ce997b9645496c0e17460fba08432} 
+friend class \doxymbox{\hyperlink{class_singleton_destroyer}{Singleton\+Destroyer}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{_singleton_8h}{Singleton.\+h}}\item 
+\doxymbox{\hyperlink{_singleton_8cpp}{Singleton.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,13 @@
+release/ApiClient.o
+release/AuthRegForm.o
+release/ProfilePage.o
+release/TasksPage.o
+release/main.o
+release/mainwindow.o
+release/singletonclient.o
+release/moc_ApiClient.o
+release/moc_AuthRegForm.o
+release/moc_ProfilePage.o
+release/moc_SingletonClient.o
+release/moc_TasksPage.o
+release/moc_mainwindow.o

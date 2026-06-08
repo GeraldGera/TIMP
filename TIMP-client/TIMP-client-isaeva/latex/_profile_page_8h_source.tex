@@ -1,0 +1,37 @@
+\doxysection{Profile\+Page.\+h}
+\hypertarget{_profile_page_8h_source}{}\label{_profile_page_8h_source}\doxymbox{\hyperlink{_profile_page_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ PROFILEPAGE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ PROFILEPAGE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <QWidget>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_api_client_8h}{apiclient.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{userinfo_8h}{userinfo.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <QJsonObject>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }QLabel;}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_profile_page_ad04019c86e17b3bbdb07aa7cb98b732e}{ProfilePage}}\ :\ \textcolor{keyword}{public}\ QWidget}
+\DoxyCodeLine{00012\ \{}
+\DoxyCodeLine{00013\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{explicit}\ \doxymbox{\hyperlink{class_profile_page_ad04019c86e17b3bbdb07aa7cb98b732e}{ProfilePage}}(\doxymbox{\hyperlink{class_api_client}{ApiClient}}\ *apiClient,\ QWidget\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{public}\ slots:}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_profile_page_a32597514c46b8f83aeff809593f8b278}{onUserChanged}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_user_info}{UserInfo}}\ \&user);}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{private}\ slots:}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{void}\ onStatsReceived(\textcolor{keyword}{const}\ QJsonObject\ \&stats);}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_profile_page_a2defbb4b17927601eed231d0123fa80a}{showEvent}}(QShowEvent\ *event)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00027\ \ \ \ \ \doxymbox{\hyperlink{class_api_client}{ApiClient}}\ *m\_apiClient;}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_userId;}
+\DoxyCodeLine{00029\ \ \ \ \ QLabel\ *m\_statsLabel;}
+\DoxyCodeLine{00030\ \};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ PROFILEPAGE\_H}}
+
+\end{DoxyCode}

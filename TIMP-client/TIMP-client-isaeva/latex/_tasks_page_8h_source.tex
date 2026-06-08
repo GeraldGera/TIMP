@@ -1,0 +1,49 @@
+\doxysection{Tasks\+Page.\+h}
+\hypertarget{_tasks_page_8h_source}{}\label{_tasks_page_8h_source}\doxymbox{\hyperlink{_tasks_page_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ TASKSPAGE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ TASKSPAGE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <QWidget>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_api_client_8h}{apiclient.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{userinfo_8h}{userinfo.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <QJsonObject>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }QTextEdit;}
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }QPushButton;}
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }QSpinBox;}
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }QLabel;}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_tasks_page_a9d1ed33d7462578de4508e05f82a3c2f}{TasksPage}}\ :\ \textcolor{keyword}{public}\ QWidget}
+\DoxyCodeLine{00015\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{explicit}\ \doxymbox{\hyperlink{class_tasks_page_a9d1ed33d7462578de4508e05f82a3c2f}{TasksPage}}(\doxymbox{\hyperlink{class_api_client}{ApiClient}}\ *apiClient,\ QWidget\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{public}\ slots:}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_tasks_page_a14dc21e3bb92812847864020ed9f820f}{onUserChanged}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_user_info}{UserInfo}}\ \&user);}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{private}\ slots:}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ onRandomTask();}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ onNumberedTask();}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ onSubmitAnswer();}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{void}\ onTaskReceived(\textcolor{keyword}{const}\ QJsonObject\ \&task);}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ onAnswerResult(\textcolor{keywordtype}{bool}\ correct,\ \textcolor{keyword}{const}\ QString\ \&message);}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00031\ \ \ \ \ \doxymbox{\hyperlink{class_api_client}{ApiClient}}\ *m\_apiClient;}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_currentTaskId;}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_userId;}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ QTextEdit\ *m\_taskEdit;}
+\DoxyCodeLine{00036\ \ \ \ \ QTextEdit\ *m\_answerEdit;}
+\DoxyCodeLine{00037\ \ \ \ \ QPushButton\ *m\_randomButton;}
+\DoxyCodeLine{00038\ \ \ \ \ QSpinBox\ *m\_taskNumberSpin;}
+\DoxyCodeLine{00039\ \ \ \ \ QPushButton\ *m\_numberedButton;}
+\DoxyCodeLine{00040\ \ \ \ \ QPushButton\ *m\_submitButton;}
+\DoxyCodeLine{00041\ \ \ \ \ QLabel\ *m\_resultLabel;}
+\DoxyCodeLine{00042\ \};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ TASKSPAGE\_H}}
+
+\end{DoxyCode}
