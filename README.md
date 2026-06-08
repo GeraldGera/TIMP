@@ -2,9 +2,15 @@
 
 self-study\_project
 
-\# Проект ТИМП
 
-\* \[Документация Сервера](https://geraldgera.github.io/TIMP/TIMP-main/html/index.html)
 
-\* \[Документация Клиента](https://geraldgera.github.io/TIMP/TIMP-client-isaeva/html/index.html)
+Документация Doxygen успешно сгенерирована для обеих частей проекта.
+
+
+
+Чтобы просмотреть интерактивные веб-страницы документации, скачайте репозиторий (кнопка \*\*Code\*\* -> \*\*Download ZIP\*\*) и откройте файлы `index.html` локально на компьютере:
+
+\* \*\*Документация Сервера:\*\* в папке `TIMP-main/html/index.html`
+
+\* \*\*Документация Клиента:\*\* в папке `TIMP-client-isaeva/html/index.html`
 
